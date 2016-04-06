@@ -1,4 +1,4 @@
-(define-library (rapid error)
+(define-library (rapid error test)
   (import (scheme base)
           (scheme write)
           (rapid test)

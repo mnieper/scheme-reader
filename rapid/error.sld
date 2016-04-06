@@ -1,4 +1,4 @@
-;;; Rapid Scheme --- An implementation of R7RS
+;;; Rapid Scheme --- An R7RS reader with source information
 
 ;; Copyright (C) 2016 Marc Nieper-Wißkirchen
 
@@ -15,7 +15,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(define-library (rapid compiler error)
+(define-library (rapid error)
   (export compile-error-object?
 	  compile-error
 	  compile-warning

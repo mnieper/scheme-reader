@@ -1,4 +1,4 @@
-;;; Rapid Scheme --- An implementation of R7RS
+;;; Rapid Scheme --- An R7RS reader with source information
 
 ;; Copyright (C) 2016 Marc Nieper-Wißkirchen
 
