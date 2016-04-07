@@ -107,6 +107,10 @@
 	       ((compile-error? condition)
 		(display-compile-error condition)
 		(exit #f))
+	       ((read-error-object? condition)
+		(display-source-location (read-error-object-location condition))
+		(display (read-error-object-message condition))
+		(newline))
 	       (else
 		;(display "rapid-compiler: internal error" (current-error-port))
 		;(newline (current-error-port))
