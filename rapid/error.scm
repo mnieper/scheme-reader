@@ -108,9 +108,12 @@
 		(display-compile-error condition)
 		(exit #f))
 	       (else
-		(display "rapid-compiler: internal error" (current-error-port))
-		(newline (current-error-port))
-		(raise condition)))
+		;(display "rapid-compiler: internal error" (current-error-port))
+		;(newline (current-error-port))
+					;(raise condition)
+		(if (error-object? condition)
+		    (raise condition)
+		    (error "unhandled exception" condition))))
 	 body1
 	 body2
 	 ...)))))
