@@ -6,7 +6,7 @@ Run Tests
 Assuming you have Chibi Scheme installed, you can run the tests by issuing
 the command
 
-  chibi-scheme -Irapid-lib tests.scm
+  chibi-scheme -Ischeme-lib tests.scm
 
 in the main directory. The test suite should work as well with any other
 R7RS-compliant implementation of the Scheme programming language although
