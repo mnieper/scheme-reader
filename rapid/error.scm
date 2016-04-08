@@ -51,8 +51,9 @@
        (eq? (compile-error-object-type object) 'warning)))
 
 (define (display-source-location source-location)
-  (define source (source-location-source source-location))
-  (when source
+  (and-let*
+      ((source-location)
+       (source (source-location-source source-location)))
     (display source)
     (display ":")
     (display (source-location-start-line source-location))

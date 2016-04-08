@@ -27,6 +27,7 @@
   (import (scheme base)
 	  (scheme process-context)
 	  (scheme write)
+	  (rapid and-let)
 	  (rapid boxes)
 	  (rapid syntax)
 	  (rapid read))

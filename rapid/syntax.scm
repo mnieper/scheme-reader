@@ -71,5 +71,18 @@
    ((datum syntax context)
     (make-syntax datum (syntax-source-location syntax) context #f))))
 
-(define (datum->syntax datum)
-  (make-syntax datum #f #f #f))
+(define (%datum->syntax datum syntax)
+  (if syntax
+      (derive-syntax datum syntax)
+      (make-syntax datum #f #f #f)))
+
+(define datum->syntax
+  (case-lambda
+   ((datum) (datum->syntax datum #f))
+   ((datum syntax)
+    ;; TODO: Handle vectors, improper lists, circular literals
+    (cond
+     ((syntax? datum) datum)
+     ((list? datum) (%datum->syntax (map datum->syntax datum) syntax))
+     (else
+      (%datum->syntax datum syntax))))))
