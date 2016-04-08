@@ -234,7 +234,7 @@
 		((char=? c #\x)
 		 (let ((c (read-inline-hex-escape)))
 		   (cons c (loop))))
-		((member c '(#\space #\tab) char=?)
+		((member c '(#\space #\tab #\newline #\return) char=?)
 		 (when (eq? delimiter #\|)
 		   (error "bad escape sequence" start (position)))
 		 (skip-intraline-white-space!)
@@ -244,7 +244,8 @@
 		    (skip-newline-after-return!))
 		   (else
 		    (error "line ending expected" start (position))))
-		 (skip-intraline-white-space!))
+		 (skip-intraline-white-space!)
+		 (loop))
 		(else
 		 (error "bad escape sequence" start (position))))))
 	    (else
