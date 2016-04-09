@@ -76,13 +76,15 @@
       (derive-syntax datum syntax)
       (make-syntax datum #f #f #f)))
 
+;; XXX: Merge with derive-syntax?
 (define datum->syntax
   (case-lambda
    ((datum) (datum->syntax datum #f))
    ((datum syntax)
-    ;; TODO: Handle vectors, improper lists, circular literals
-    (cond
-     ((syntax? datum) datum)
-     ((list? datum) (%datum->syntax (map datum->syntax datum) syntax))
-     (else
-      (%datum->syntax datum syntax))))))
+    (let loop ((datum datum))
+      ;; TODO: Handle vectors, improper lists, circular literals
+      (cond
+       ((syntax? datum) datum)
+       ((list? datum) (%datum->syntax (map loop datum) syntax))
+       (else
+	(%datum->syntax datum syntax)))))))
